@@ -15,6 +15,7 @@ const assert = require('assert').strict;
         await dropDown({id: 1}).select({index: randNum});
         await write(split, into(textBox({id: 1}),{force:true}));
         await click('Apply');
+        await reload('http://localhost:4200/pfm')
         var buttonText = await evaluate(button({name: idTransaction}), (element) => {return element.getAttribute('value')});
         await assert.equal(buttonText, "Show splits")
     } catch (error) {
