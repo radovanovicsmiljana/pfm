@@ -1,0 +1,10 @@
+<div class="row head">
+    Splits
+</div>
+<div class="row movedown">
+<mat-chip-list #chipList style="justify-content: center!important; text-align: center!important;">
+    <mat-chip [selectable]="true" [removable]="true" *ngFor="let split of splits" style="background-color:#0A8AD2; color: white;">
+      {{split.catname}} : {{split.amount}} USD
+    </mat-chip>
+</mat-chip-list>
+</div>

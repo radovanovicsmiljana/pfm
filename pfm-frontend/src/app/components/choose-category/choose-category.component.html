@@ -1,0 +1,29 @@
+<body class="s">
+    <div class="row head">
+        Choose category
+    </div>
+    <div class="row body-text">
+        You have selected {{length}} transaction, for {{length_str}} categorization
+    </div>
+    <div class="row select-cat">
+        <select id="choose_cat" class="form-select" name={{idT}} (change)="onChange($event.target.value)">
+            <option *ngIf="preselectedExist" value="{{selected_category}}" selected>{{selected_category_name}}</option>
+            <option *ngIf="!preselectedExist && selected_category==''" selected>Choose category</option>
+            <option *ngFor='let category of categories' value="{{category.code}}">{{category.name}}</option>
+        </select>
+    </div>
+    <div class="row select-cat-sub">
+        <select class="form-select dis" disabled *ngIf='disabled_sub' [(ngModel)]="selected_subcategory_name">
+            <option selected>Choose subcategory (optional)</option>
+        </select>
+        <select class="form-select" *ngIf='!disabled_sub' (change)="onChangeSub($event.target.value)">
+            <option *ngIf="preselectedExist" value="{{selected_subcategory}}" selected>{{selected_subcategory_name}}</option>
+            <option *ngIf="!preselectedExist" selected>Choose subcategory (optional)</option>
+            <option *ngFor='let subcategory of selected_subcategories' value="{{subcategory.code}}">{{subcategory.name}}</option>
+        </select>
+    </div>
+    <div class="row buttons">
+        <div class="col-sm-6"><button class="button-style" igxButton igxButtonColor="white" igxButtonBackground="#555657" igxRipple="white" (click)='close()'>Cancel</button></div>
+        <div class="col-sm-6"><button class="button-style" igxButton igxButtonColor="white" igxButtonBackground="#029c1b" igxRipple="white" (click)='categorize()'>Apply</button></div>
+    </div>
+</body>

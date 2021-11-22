@@ -1,0 +1,12 @@
+.head {
+    background-color: #0A8AD2;
+    height: 8vh;
+    color: white;
+    justify-content: center;
+    font-size: x-large;
+    padding-top: 2vh;
+}
+
+.movedown {
+    margin-top: 10px;
+}

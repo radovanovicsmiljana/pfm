@@ -1,0 +1,41 @@
+.example-container {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+}
+  
+.example-sidenav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+    background: white;
+}
+  
+.example-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.logo-img {
+    width: 80%;
+    height: 80%;
+    margin-top: 4%;
+}
+
+.text {
+    font-family: 'Lucida Sans Regular';
+    font-size: large;
+    margin-left: 0!important;
+}
+
+.nav-icon {
+    background: #0A8AD2;
+    color: white;
+    transform: scale(1.5);
+}

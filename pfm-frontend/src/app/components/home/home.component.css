@@ -1,0 +1,51 @@
+.div-text {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    font-family:'Lucida Sans';
+    font-size: xx-large;
+}
+
+.example-header {
+    height: 5vh;
+    background: #0A8AD2;
+}
+
+.avatar-sample {
+    display: flex;
+    width: 88px;
+    height: 88px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 100px;
+    margin-top: 20px;
+}
+
+.name {
+    padding-left: 15%;
+    margin-top: -40%;
+    font-size: smaller;
+    color: white;
+}
+
+.msg {
+    margin-left: -165%;
+    margin-top: 5%;
+    font-size: small;
+    color: white;
+}
+
+::ng-deep .mat-badge-content {
+    font-family: 'Material Icons';
+    background-color: rgba(245, 245, 245, 0.5);
+    margin-top: 4px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}

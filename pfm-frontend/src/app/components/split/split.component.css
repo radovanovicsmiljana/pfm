@@ -1,0 +1,87 @@
+body {
+    overflow-y: visible!important;
+    overflow-x: visible;
+    width: 400px;
+}
+
+@media only screen and (max-width : 420px) {
+    body {
+        overflow-y: visible!important;
+        overflow-x: visible;
+        width: 100%;
+    }
+} 
+
+.head {
+    background-color: #0A8AD2;
+    height: 8vh;
+    color: white;
+    justify-content: center;
+    font-size: x-large;
+    padding-top: 2vh;
+}
+
+.body-text {
+    color: #0A8AD2;
+    justify-content: center;
+    background-color: white;
+    font-weight: 500;
+    padding-top: 4vh;
+    height: 6vh;
+    padding-bottom: 5vh;
+}
+
+select {
+    background-color: #0A8AD2;
+    color: white;
+}
+
+.select-cat {
+    /* padding-top: 1vh; */
+    background-color: white;
+}
+
+.select-cat-sub {
+    padding-top: 1vh;
+    background-color: white;
+}
+
+.dis {
+    color: black;
+}
+
+.buttons {
+    background-color: white;
+    padding-top: 12vh;
+    justify-content: center;
+}
+
+.button-style {
+    width: 100%!important;
+}
+
+.remove-cat {
+    padding-top: 3vh;
+    background-color: white;
+    color: #0A8AD2;
+    font-size: small;
+    justify-content: left;
+}
+
+.mat-mini-fab {
+    background-color: #0A8AD2;
+    color: white;
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.mat-icon {
+    max-width: 20px;
+    max-height: 20px;
+    margin-top: -40px;
+    margin-left: -4px;
+}
+
+.plus {
+    margin-top: -26px;
+}

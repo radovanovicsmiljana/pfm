@@ -1,0 +1,54 @@
+<body class="s">
+    <div class="row head">
+        Split transaction
+    </div>
+    <div class="row body-text">
+        Please split transaction to categories:
+    </div>
+    <div *ngFor="let split of splits_available">
+    <div class="row remove-cat" *ngIf="split.id!=0">
+        <div class="col-sm-5">
+            Remove this category
+        </div>
+        <div class="col-sm-6">
+            <hr/>
+        </div>
+        <div class="col-sm-1">
+            <button mat-mini-fab (click)="close_split(split.id)"><mat-icon>minimize</mat-icon></button>
+        </div>
+    </div>
+    <div class="row select-cat">
+        <select class="form-select" name={{transaction.id}} id={{split.id}} (change)="onChange($event.target.value, split.id)">
+            <option selected>Choose category</option>
+            <option *ngFor='let category of categories' value="{{category.code}}">{{category.name}}</option>
+        </select>
+    </div>
+    <div class="row select-cat-sub">
+        <select class="form-select dis" disabled *ngIf='split.disabled_sub'>
+            <option selected>Choose subcategory (optional)</option>
+        </select>
+        <select class="form-select" *ngIf='!split.disabled_sub' (change)="onChangeSub($event.target.value, split.id)">
+            <option selected>Choose subcategory (optional)</option>
+            <option *ngFor='let subcategory of split.subs' value="{{subcategory.code}}">{{subcategory.name}}</option>
+        </select>
+    </div>
+    <div class="row select-cat-sub">
+        <input type="text" id={{split.id}} class="form-control input-amount" placeholder="Enter amount for this category" [(ngModel)]="split.amount">
+    </div>
+    </div>
+    <div class="row remove-cat">
+        <div class="col-sm-5">
+            Add new category
+        </div>
+        <div class="col-sm-6">
+            <hr/>
+        </div>
+        <div class="col-sm-1">
+            <button mat-mini-fab (click)='add_split()'><mat-icon class="plus">add</mat-icon></button>
+        </div>
+    </div>
+    <div class="row buttons">
+        <div class="col-sm-6"><button class="button-style" igxButton igxButtonColor="white" igxButtonBackground="#555657" igxRipple="white" (click)='close()'>Cancel</button></div>
+        <div class="col-sm-6"><button class="button-style" igxButton igxButtonColor="white" igxButtonBackground="#029c1b" igxRipple="white" (click)='split()'>Apply</button></div>
+    </div>
+</body>

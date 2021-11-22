@@ -1,0 +1,12 @@
+<mat-toolbar class="example-header">
+    <mat-toolbar-row>
+        <span style="margin-left: 20vw; font-size: smaller; color: white;">Home</span>
+        <span class="example-spacer"></span>
+        <span class="avatar-sample" *ngIf="!isMobile()">
+            <igx-avatar src="../../../assets/profile_photo.jpg" [roundShape]="true" size="medium" matBadge="message" matBadgeColor="warn"></igx-avatar>
+            <p class="name">{{user_data.name}} {{user_data.surname}}</p>
+            <p class="msg">{{user_data.messages}} new messages</p>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="div-text">Welcome!</div>

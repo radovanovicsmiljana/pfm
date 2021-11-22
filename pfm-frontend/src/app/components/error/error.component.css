@@ -1,0 +1,11 @@
+div {
+    display: flex;
+    justify-content: center;
+    font-weight: 800;
+}
+
+button {
+    background-color: #0A8AD2;
+    color: white;
+    justify-content: center;
+}

@@ -1,0 +1,46 @@
+.head {
+    background-color: #0A8AD2;
+    height: 8vh;
+    color: white;
+    justify-content: center;
+    font-size: x-large;
+    padding-top: 2vh;
+}
+
+.body-text {
+    color: #0A8AD2;
+    justify-content: center;
+    background-color: white;
+    font-weight: 500;
+    padding-top: 10px;
+    height: 50px;
+}
+
+select {
+    background-color: #0A8AD2;
+    color: white;
+}
+
+.select-cat {
+    padding-top: 30px;
+    background-color: white;
+}
+
+.select-cat-sub {
+    padding-top: 1vh;
+    background-color: white;
+}
+
+.dis {
+    color: black;
+}
+
+.buttons {
+    background-color: white;
+    padding-top: 12vh;
+    justify-content: center;
+}
+
+.button-style {
+    width: 100%!important;
+}

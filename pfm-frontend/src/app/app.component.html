@@ -1,0 +1,24 @@
+<ng-container>
+
+  <mat-sidenav-container class="example-container">
+      <mat-sidenav #sidenav mode="side" opened class="example-sidenav"
+      [fixedInViewport]="true" [fixedTopGap]="0"
+      [fixedBottomGap]="0">
+
+          <mat-grid-list cols="1" rowHeight="4:1" >
+              <mat-grid-tile>
+                  <img src="assets/telenor-logo.png" class="logo-img">
+              </mat-grid-tile>
+          </mat-grid-list>
+          
+          <mat-nav-list style="margin-top: 10%;  overflow-x:hidden;">
+              <mat-list-item *ngFor="let item of sidenav_data.items" style="padding-left: 2%; margin-bottom: 5%;" (click)='goTo(item[0])'>
+                <mat-icon matListIcon class="nav-icon">{{item[1]}}</mat-icon>
+                <h3 matLine> {{item[0]}} </h3>
+              </mat-list-item>
+          </mat-nav-list>
+      </mat-sidenav>
+  </mat-sidenav-container>
+
+</ng-container>
+<router-outlet></router-outlet>

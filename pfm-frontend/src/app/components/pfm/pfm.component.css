@@ -1,0 +1,511 @@
+.example-header {
+    height: 5vh;
+    background: #0A8AD2;
+}
+
+.avatar-sample {
+    display: flex;
+    width: 88px;
+    height: 88px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 100px;
+    margin-top: 20px;
+    z-index: 3;
+}
+
+.avatar-sample-money {
+    display: flex;
+    width: 88px;
+    height: 88px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    z-index: 3;
+}
+
+.name {
+    padding-left: 15%;
+    margin-top: -40%;
+    font-size: smaller;
+    color: white;
+}
+
+.msg {
+    margin-left: -165%;
+    margin-top: 5%;
+    font-size: small;
+    color: white;
+}
+
+mat-sidenav-container {
+    min-height: 100vh!important;
+    background-color: #d8dde3;
+    overflow-y: hidden!important;
+    overflow-x: hidden!important;
+}
+
+mat-sidenav-content {
+    overflow-y: hidden!important;
+    overflow-x: hidden!important;
+    border-right: none!important;
+}
+
+mat-sidenav {
+    background-color: #d8dde3;
+    width: 400px;
+    padding-top: 55px;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow-x: hidden!important;
+    overflow-y: hidden!important;
+    border: none!important;
+}
+
+@media only screen and (max-width : 500px) {
+    mat-sidenav {
+        background-color: #d8dde3;
+        width: 300px;
+        border-right: none;
+        padding: 20px;
+    }
+
+    .b-name {
+        color: #0A8AD2;
+        font-weight: 600;
+        font-size:larger;
+        margin-top: 20px;
+    }
+} 
+
+@media only screen and (max-width : 350px) {
+    mat-sidenav {
+        background-color: #d8dde3;
+        width: 250px;
+        border-right: none;
+        padding: 20px;
+    }
+} 
+
+@media only screen and (max-width : 760px) {
+    mat-list-item {
+        min-height: 300px;
+        margin-bottom: 1%;
+    }
+    .style-list {
+        background: rgb(206, 236, 243);
+        border-radius: 10px;
+        padding-top: 100px!important;
+        min-height: 260px!important;
+    }
+    .a-name {
+        color: rgb(134, 134, 134)!important;
+        font-weight: 500;
+        font-size: larger!important;
+        margin-top: 5px;
+    }
+    .btn-stl {
+        height: 30px;
+        font-size: small;
+        width: 150px!important;
+    }
+    .b-name {
+        color: #0A8AD2;
+        font-weight: 600;
+        font-size: x-large!important;
+    }
+    .chck {
+        text-align: center;
+        margin-top: 20px;
+        margin-right: 9px!important;
+    }
+    .bttns {
+        margin-top: 0px!important;
+        text-align: right;
+    }
+    
+    .bttns1 {
+        margin-top: 0px!important;
+        text-align: left;
+    }
+} 
+
+mat-sidenav-content {
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #d8dde3;
+    border-right: hidden;
+}
+
+
+body {
+    margin-left: 20vw;
+}
+
+.example-header {
+    background: #0A8AD2;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.first-layer {
+    color: #0A8AD2;
+    font-weight: 500;
+    margin-top: 50px;
+    margin-bottom: -15px;
+}
+
+hr {
+    color: #0A8AD2;
+}
+
+.second-layer {
+    height: 150px;
+    background: url('../../../assets/wallpaper.jpg');
+    background-size: cover;
+}
+
+.cur-acc {
+    color: white;
+    font-size: xx-large;  
+    margin-left: 25px;
+    margin-top: 40px;
+}
+
+.cur-acc-sm {
+    color: white;
+    font-size: x-large;  
+    margin-top: 40px;
+}
+
+.acc-num {
+    color: rgb(29, 70, 109);
+    margin-left: 25px;
+    margin-top: -15px;
+}
+
+.shove-right {
+    margin-top: 5px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+@media only screen and (max-width : 1400px) {
+    .cur-acc {
+        color: white;
+        font-size: xx-large;  
+        margin-left: 25px;
+        margin-top: 25px;
+    }
+} 
+
+@media only screen and (max-width : 580px) {
+    .cur-acc {
+        color: white;
+        font-size: small;  
+        margin-left: 25px;
+        margin-top: 40px;
+    }
+    
+    .cur-acc-sm {
+        color: white;
+        font-size: small;  
+        margin-top: 40px;
+        margin-left: 25px;
+    }
+    
+    .acc-num {
+        color: rgb(29, 70, 109);
+        margin-left: 25px;
+        margin-top: -15px;
+        font-size: small;
+    }
+
+    .second-layer {
+        height: 200px;
+        background: url('../../../assets/wallpaper.jpg');
+        background-size: cover;
+    }
+
+    .shove-right {
+        margin-top: -50px;
+        text-align: left;
+    }
+} 
+
+::ng-deep .mat-tab-label {
+    color:white!important;
+}
+
+::ng-deep .mat-tab-label-active {
+    color: white;
+}
+
+mat-grid-tile {
+    background-color: #0A8AD2;
+    color: white;
+}
+
+.color-grid {
+    background-color: #0A8AD2;
+    color: white;
+}
+
+.fourth-layer {
+    background-color: #0A8AD2;
+    height: 50px;
+}
+
+.view {
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.view-r {
+    text-align: left;
+}
+
+.fifth-layer {
+    height: 60px;
+    background-color: white;
+    border-bottom: 1px ridge rgb(169, 169, 170);
+}
+
+.fifth-layer-nobrd {
+    height: 60px;
+    background-color: white;
+}
+
+.white-grid {
+    background-color: white!important;
+}
+
+.mat-icon-button {
+    color: rgb(29, 70, 109);
+}
+
+.mat-icon-button:active {
+    color: white;
+}
+
+.blue-btn {
+    background-color: #0A8AD2;
+    min-width: 50px;
+    max-width: 100%;
+    color: white;
+    text-align: left;
+    margin-top: 12px;
+}
+
+.sixth-layer { 
+    background-color: white;
+    border-bottom: 1px ridge rgb(169, 169, 170);
+}
+
+.mat-list {
+    margin-top: 6%;
+}
+
+.mat-list-item {
+    min-height: 150px;
+    margin-bottom: 1%;
+}
+
+.igx-card {
+    min-width: 100%!important;
+    height: 150px;
+}
+
+.igx-avatar {
+    background: rgb(29, 70, 109);
+    color: white;
+}
+
+.b-name {
+    color: #0A8AD2;
+    font-weight: 600;
+    font-size:larger;
+}
+
+.date {
+    margin-top: 1px;
+    font-size: 200;
+    color: grey;
+}
+
+::ng-deep .mat-badge-content {
+    font-family: 'Material Icons';
+    background-color: rgba(245, 245, 245, 0.5);
+    margin-top: 4px;
+}
+
+::ng-deep .credit .mat-badge-content {
+    color: red;
+}
+
+::ng-deep .debit .mat-badge-content {
+    color: green;
+}
+
+::ng-deep .igx-card-actions {
+    min-width: 25%;
+    margin-top: 2%;
+}
+
+.a-name {
+    color: #0A8AD2;
+    font-weight: 500;
+    font-size:x-large;
+}
+
+.shove-left {
+    margin-left: 60%;
+    border-left: 1px ridge #0A8AD2;
+}
+
+.btn-stl {
+    height: 30px;
+    font-size: small;
+    width: 100%;
+}
+
+.categ {
+    background-color: white;
+    height: 40px;
+    margin-top: 4vh;
+    color: #0A8AD2;
+    font-size: larger;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+.categ2 {
+    background-color: white;
+    height: 40px;
+    margin-top: 1vh;
+    color: #0A8AD2;
+    font-size: larger;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+.titles {
+    margin-top: 3vh;
+    color: #0A8AD2;
+    font-weight: 500;
+    border-bottom: 1px ridge #0A8AD2;
+}
+
+::ng-deep .igx-date-picker {
+    color: #0A8AD2;
+    background-color: #0A8AD2;
+}
+
+.select-list {
+    height: 5vh;
+    margin-top: 2%;
+}
+
+.btns {
+    height: 30px;
+    margin-top: 20px;
+}
+
+select {
+    background-color: #0A8AD2;
+    color: white;
+}
+
+.style-list {
+    background: rgb(206, 236, 243);
+    border-radius: 10px;
+    padding-top: 40px;
+}
+
+.chck {
+    text-align: center;
+    margin-top: 20px;
+}
+
+mat-chip {
+    margin-top: 30px!important;
+}
+
+.movedown {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.avatars {
+    text-align: left!important;
+    margin-left: -20px;
+    margin-top: 20px;
+}
+
+.kbrd {
+    transform: scale(2);
+    color: #0A8AD2;
+    margin-top: 18px;
+}
+
+.sel_tr {
+    margin-top: 18px;
+    color: rgb(82, 80, 80);
+    font-weight: 500;
+    text-align: left;
+}
+
+.bttns {
+    margin-top: 12px;
+    text-align: right;
+}
+
+.bttns1 {
+    margin-top: 12px;
+    text-align: left;
+}
+
+.white-active {
+    color: white;
+}
+
+.center-chart {
+    justify-content: center;
+}
+
+.donut-settings {
+    height: 420px;
+    text-align: center;
+    padding-top: 50px;
+    padding-left: 20%;
+}
+
+@media only screen and (max-width : 650px) {
+    .donut-settings {
+        height: 420px;
+        text-align: center;
+        padding-top: 50px;
+        padding-left: 0;
+    }
+} 
+
+
+
+
+
+.total {
+    margin-top: -28%;
+    margin-left: 13%;
+    font-size: small;
+    color: #0A8AD2;
+}
+
+.total-value {
+    margin-top: -32%;
+    margin-left: 13%;
+    color: #0A8AD2;
+    font-weight: 600;
+}

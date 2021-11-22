@@ -1,0 +1,326 @@
+<body>
+
+    <mat-toolbar class="example-header">
+        <mat-toolbar-row>
+            <span style="font-size: smaller; color: white;">PFM</span>
+            <span class="example-spacer"></span>
+            <span class="avatar-sample" *ngIf="!isMobile()">
+                <igx-avatar src="../../../assets/profile_photo.jpg" [roundShape]="true" size="medium" matBadge="message" matBadgeColor="warn"></igx-avatar>
+                <p class="name">Milana Ognjanovic</p>
+                <p class="msg">12 new messages</p>
+            </span>
+            <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()" position="end">
+                <mat-icon *ngIf="!sidenav.opened" style="color: white;">
+                    menu
+                </mat-icon>
+                <mat-icon *ngIf="sidenav.opened" style="color: white;">
+                    close
+                </mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-sidenav-container>
+    <mat-sidenav-content>
+            <div class="first-layer">
+                FINANCIAL OVERVIEW
+            </div>
+            <hr/>
+            <div class="row second-layer">
+                <div class="col-sm-1" *ngIf="!showMoneySign()">
+                    <div class="avatar-sample-money">
+                        <igx-avatar src="../../../assets/dollar-sign.jpg" [roundShape]="true" size="medium" ></igx-avatar>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <p class="cur-acc">Current account</p>
+                    <p class="acc-num">{{user_data.account_number}}</p>
+                </div>
+                <div class="col-sm-6 shove-right">
+                    <p class="cur-acc-sm">{{user_data.available_ballance}} RSD</p>
+                    <p class="acc-num">AVAILABLE BALANCE</p>
+                </div>
+            </div>
+        <div class="row third-layer">
+            <mat-tab-group mat-stretch-tabs style="background-color: rgb(29, 70, 109);">
+                <mat-tab>
+                  <ng-template mat-tab-label>
+                    EXECUTED
+                  </ng-template>
+                </mat-tab>
+                <mat-tab>
+                  <ng-template mat-tab-label>
+                    REJECTED
+                  </ng-template>
+                </mat-tab>
+                <mat-tab>
+                  <ng-template mat-tab-label>
+                    FUTURE
+                  </ng-template>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                      DRAFT
+                    </ng-template>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                      PENDING
+                    </ng-template>
+                </mat-tab>
+              </mat-tab-group>
+        </div>
+        <div class="row fourth-layer" *ngIf="!showButtons()">
+            <div class="col-sm-6 view" style="text-align: right;" *ngIf="!showChooseView()">CHOOSE VIEW: </div>
+            <div class="col-sm-1 view-r"><button mat-icon-button (click)='change_view("list")'><mat-icon [class.white-active]="current_view=='list'">list</mat-icon></button></div>
+            <div class="col-sm-1 view-r"><button mat-icon-button (click)='change_view("tree")'><mat-icon [class.white-active]="current_view=='tree'">dashboard</mat-icon></button></div>
+            <div class="col-sm-1 view-r"><button mat-icon-button (click)='change_view("calendar")'><mat-icon [class.white-active]="current_view=='calendar'">date_range</mat-icon></button></div>
+            <div class="col-sm-1 view-r"><button mat-icon-button (click)='change_view("donut")'><mat-icon [class.white-active]="current_view=='donut'">donut_small</mat-icon></button></div>
+            <div class="col-sm-1 view-r"><button mat-icon-button (click)='change_view("bubble")'><mat-icon [class.white-active]="current_view=='bubble'">bubble_chart</mat-icon></button></div>
+            <div class="col-sm-1 view-r"><button mat-icon-button (click)='change_view("bar")'><mat-icon [class.white-active]="current_view=='bar'">bar_chart</mat-icon></button></div>
+        </div>
+        <div class="row">
+        <mat-grid-list cols="3" rowHeight="3:2" *ngIf="showButtons()" class="color-grid">
+            <mat-grid-tile><button mat-icon-button (click)='change_view("list")'><mat-icon [class.white-active]="current_view=='list'">list</mat-icon></button></mat-grid-tile>
+            <mat-grid-tile><button mat-icon-button (click)='change_view("tree")'><mat-icon [class.white-active]="current_view=='tree'">dashboard</mat-icon></button></mat-grid-tile>
+            <mat-grid-tile><button mat-icon-button (click)='change_view("calendar")'><mat-icon [class.white-active]="current_view=='calendar'">date_range</mat-icon></button></mat-grid-tile>
+            <mat-grid-tile><button mat-icon-button (click)='change_view("donut")'><mat-icon [class.white-active]="current_view=='donut'">donut_small</mat-icon></button></mat-grid-tile>
+            <mat-grid-tile><button mat-icon-button (click)='change_view("bubble")'><mat-icon [class.white-active]="current_view=='bubble'">bubble_chart</mat-icon></button></mat-grid-tile>
+            <mat-grid-tile><button mat-icon-button (click)='change_view("bar")'><mat-icon [class.white-active]="current_view=='bar'">bar_chart</mat-icon></button></mat-grid-tile>
+          </mat-grid-list>
+        </div>
+        <div class="row fifth-layer" *ngIf="!categorizing_in_process && current_view=='list'">
+            <div class="col-sm-12"><button mat-button class="blue-btn" (click)='start_categorizing()'>Categorize multiple transactions</button></div>
+        </div>
+        <div class="row fifth-layer" *ngIf="categorizing_in_process && current_view=='list' && !showCategorizing()">
+            <div class="col-sm-1"><mat-icon class="kbrd">keyboard_arrow_down</mat-icon></div>
+            <div class="col-sm-5 sel_tr">Please select transactions</div>
+            <div class="col-sm-3" style="text-align: right;"><button class="bttns" igxButton igxButtonColor="white" igxButtonBackground="#0A8AD2" igxRipple="white" (click)="choose_multiple_category()">OK</button></div>
+            <div class="col-sm-3" style="text-align: left;"><button class="bttns1" igxButton igxButtonColor="white" igxButtonBackground="#555657" igxRipple="white" (click)="stop_categorizing()">CANCEL</button></div>
+        </div>
+        <div class="row fifth-layer-nobrd" *ngIf="showCategorizing() && categorizing_in_process && current_view=='list'">
+            <div class="col-sm-12 sel_tr" >Please select transactions</div>
+        </div>
+        <div class="row fifth-layer" *ngIf="showCategorizing() && categorizing_in_process && current_view=='list'">
+            <mat-grid-list cols="2" rowHeight="4:1">
+                <mat-grid-tile class="white-grid"><button class="bttns" igxButton igxButtonColor="white" igxButtonBackground="#0A8AD2" igxRipple="white" (click)="choose_multiple_category()">OK</button></mat-grid-tile>
+                <mat-grid-tile class="white-grid"><button class="bttns1" igxButton igxButtonColor="white" igxButtonBackground="#555657" igxRipple="white" (click)="stop_categorizing()">CANCEL</button></mat-grid-tile>
+            </mat-grid-list>
+        </div>
+        <div class="row sixth-layer" *ngIf="current_view=='list'">
+
+            <mat-list style="margin-top: 0px;">
+                <mat-list-item class="style-list" *ngFor="let item of (items | slice: lowValue: highValue)" >
+                    <div class="col-sm-1"><input class="form-check-input chck" type="checkbox" value="" [(ngModel)]="item.selected" *ngIf="categorizing_in_process"></div>
+                    <div class="col-sm-1 avatars" *ngIf="!isMobile()">
+                        <igx-avatar igx-avatar class="debit" icon="person" [roundShape]="true" size="medium" matBadgeOverlap="true"  matBadgeSize="large" matBadge="arrow_upward" matBadgePosition="before" *ngIf="item.direction == 'd'"></igx-avatar>
+                        <igx-avatar igx-avatar class="credit" icon="person" [roundShape]="true" size="medium" matBadgeOverlap="true"  matBadgeSize="large" matBadge="arrow_downward" matBadgePosition="before" *ngIf="item.direction == 'c'"></igx-avatar>
+                    </div>
+                    <div class="col-sm-6 movedown" *ngIf="!showChooseView()">
+                        <div class="b-name">{{item.beneficiary_name}}</div>
+                        <div class="date">{{item.date}}</div>
+                        <mat-chip-list #chipList class="chips">
+                            <button mat-chip id={{item.id}} name={{item.catcode}} [selectable]="true" [removable]="true" *ngIf="item.catcode!=''" style="background-color:#0A8AD2; color: white; margin-top: 20px;" (click)="choose_single_category(item)">
+                              {{item.catname}}
+                              <button matChipRemove style="color: white;" (click)="choose_single_category(item)" id="addsCategory">
+                                <mat-icon>add</mat-icon>
+                              </button>
+                            </button>
+                            <button mat-chip *ngIf="item.catcode==''" style="margin-top: 20px; background-color: #555657; color: white;" (click)="choose_single_category(item)">
+                                Add category
+                                <button matChipRemove style="color: white;" (click)="choose_single_category(item)" id="addCategory">
+                                  <mat-icon>add</mat-icon>
+                                </button>
+                            </button>
+                            <button mat-chip name={{item.id}} value="Show splits" *ngIf="item.splits.length != 0" style="margin-top: 20px; background-color:#0A8AD2; color: white;" (click)="showSplits(item)">
+                                Show splits
+                            </button>
+                        </mat-chip-list>
+                    </div>
+                    <div class="col-sm-4 shove-right" *ngIf="!showChooseView()">
+                        <div class="a-name" id={{item.amount}}>{{item.amount}}<br/><mat-icon class="shove-left" *ngIf="!isMobile()">location_on</mat-icon><br/>
+                        <button class="btn-stl" igxButton igxButtonColor="white" igxButtonBackground="#0A8AD2" igxRipple="white" (click)="split_transaction(item)">SPLIT TRANSACTION</button></div>
+                    </div>
+                    <div class="col-sm-11" *ngIf="showChooseView()" style="text-align: middle; justify-content: center!important;">
+                        <div class="b-name">{{item.beneficiary_name}}</div>
+                        <div class="a-name" id={{item.amount}}>{{item.amount}}</div>
+                        <button class="btn-stl" igxButton igxButtonColor="white" igxButtonBackground="#0A8AD2" igxRipple="white" (click)="split_transaction(item)">SPLIT TRANSACTION</button>     
+                        <div><mat-chip-list #chipList style="justify-content: center!important; text-align: center!important;">
+                            <button mat-chip id={{item.id}} name={{item.catcode}} [selectable]="true" [removable]="true" *ngIf="item.catcode!=''" style="background-color:#0A8AD2; color: white; margin-top: 20px;" (click)="choose_single_category(item)">
+                                {{item.catname}}
+                                <button matChipRemove style="color: white;" (click)="choose_single_category(item)" id="addsCategory">
+                                  <mat-icon>add</mat-icon>
+                                </button>
+                            </button>
+                            <button mat-chip *ngIf="item.catcode==''" style=" margin-top: 20px; background-color: #555657; color: white;">
+                                Add category
+                                <button matChipRemove style="color: white;" (click)="choose_single_category(item)" id="addCategory">
+                                  <mat-icon>add</mat-icon>
+                                </button>
+                            </button>
+                            <button mat-chip id={{item.id}} *ngIf="item.splits.length != 0" style=" margin-top: 20px; background-color:#0A8AD2; color: white;" (click)="showSplits(item)">
+                                Show splits
+                            </button>
+                        </mat-chip-list>
+                    </div>
+                    </div>
+                </mat-list-item>
+            </mat-list>
+
+
+            <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20, 25, 50]" (page)="getPaginatorData($event)" [showFirstLastButtons]="false"></mat-paginator>
+            
+        </div>
+        <div class="row sixth-layer" *ngIf="current_view=='tree'">
+            <div id="chart">
+                <apx-chart
+                  [series]="chartOptions.series"
+                  [chart]="chartOptions.chart"
+                  [dataLabels]="chartOptions.dataLabels"
+                  [plotOptions]="chartOptions.plotOptions"
+                  [title]="chartOptions.title"
+                  [colors]="chartOptions.colors"
+                ></apx-chart>
+              </div>
+        </div>
+        <div class="row sixth-layer" *ngIf="current_view=='tree' && enable_subcategories">
+            <div id="chart">
+                <apx-chart
+                  [series]="chartOptionsSub[enableChart].series"
+                  [chart]="chartOptionsSub[enableChart].chart"
+                  [dataLabels]="chartOptionsSub[enableChart].dataLabels"
+                  [plotOptions]="chartOptionsSub[enableChart].plotOptions"
+                  [title]="chartOptionsSub[enableChart].title"
+                  [colors]="chartOptionsSub[enableChart].colors"
+                ></apx-chart>
+              </div>
+        </div>
+
+        <div class="row sixth-layer" *ngIf="current_view=='bar'">
+            <div id="chart">
+                <apx-chart
+                  [series]="barOptions.series"
+                  [chart]="barOptions.chart"
+                  [dataLabels]="barOptions.dataLabels"
+                  [plotOptions]="barOptions.plotOptions"
+                  [xaxis]="barOptions.xaxis"
+                ></apx-chart>
+              </div>
+        </div>
+
+        <div class="row sixth-layer" *ngIf="current_view=='bubble'">
+            <div id="chart">
+                <apx-chart
+                  [series]="bubbleOptions.series"
+                  [chart]="bubbleOptions.chart"
+                  [xaxis]="bubbleOptions.xaxis"
+                  [fill]="bubbleOptions.fill"
+                  [dataLabels]="bubbleOptions.dataLabels"
+                  [title]="bubbleOptions.title"
+                  [yaxis]="bubbleOptions.yaxis"
+                  [tooltip]="bubbleOptions.tooltip"
+                  [theme]="bubbleOptions.theme"
+                ></apx-chart>
+              </div>
+        </div>
+
+        <div class="row sixth-layer donut-settings" *ngIf="current_view=='donut'">
+            <div id="chart" class="col-sm-12">
+                <apx-chart
+                  [series]="donutOptions.series"
+                  [chart]="donutOptions.chart"
+                  [labels]="donutOptions.labels"
+                  [fill]="donutOptions.fill"
+                  [dataLabels]="donutOptions.dataLabels"
+                  [responsive]="donutOptions.responsive"
+                ></apx-chart>
+              </div>
+        </div>
+        
+    </mat-sidenav-content>
+
+    <mat-sidenav #sidenav="matSidenav" mode="side" position="end" opened>
+        
+        <div class="row categ">
+            <mat-icon style="margin-left: 1%; margin-right: 5%; margin-top: 1%;">bar_chart</mat-icon>Financial overview
+        </div>
+        <div class="row categ2">
+            <mat-icon style="margin-left: 1%; margin-right: 5%; margin-top: 1%;">pie_chart</mat-icon>Budgets
+        </div>
+        <div class="row categ2">
+            <mat-icon style="margin-left: 1%; margin-right: 5%; margin-top: 1%;">outlined_flag</mat-icon>Saving goals
+        </div>
+        <div class="row categ2">
+            <mat-icon style="margin-left: 1%; margin-right: 5%; margin-top: 1%;">settings</mat-icon>Categorization rules
+        </div>
+        <div class="titles">
+            PERIOD:
+        </div>
+        <div class="row">
+            <div class="formGroup col">
+                <div class="date-picker-wrapper">
+                    <igx-date-picker [value]="dateFrom" [(ngModel)]="dateFrom">
+                        <label igxLabel>From:</label>
+                    </igx-date-picker>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="formGroup col">
+                <div class="date-picker-wrapper">
+                    <igx-date-picker [value]="dateTo" [(ngModel)]="dateTo">
+                        <label igxLabel igxColor="red">To:</label>
+                    </igx-date-picker>
+                </div>
+            </div>
+        </div>
+        <div class="titles">
+            TRANSACTION TYPE:
+        </div>
+        <div class="select-list">
+            <select class="form-select" (change)="selectTransactionType($event.target.value)">
+                <option value="" selected>All types</option>
+                <option value="dep">Deposit</option>
+                  <option value="wdw">Withdrawal</option>
+                  <option value="pmt">Payment</option>
+                  <option value="fee">Fee</option>
+                  <option value="inc">Interest credit</option>
+                  <option value="rev">Reversal</option>
+                  <option value="adj">Adjustment</option>
+                  <option value="lnd">Loan disbursement</option>
+                  <option value="lnr">Loan repayment</option>
+                  <option value="fcx">Foreign currency exchange</option>
+                  <option value="aop">Account openning</option>
+                  <option value="acl">Account closing</option>
+                  <option value="spl">Split payment</option>
+                  <option value="sal">Salary</option>
+              </select>
+        </div>
+        <div class="titles">
+            FILTER BY ACCOUNT:
+        </div>
+        <div class="select-list">
+            <select class="form-select">
+                <option selected>All accounts</option>
+            </select>
+        </div>
+        <div class="titles">
+            BENEFICIARY:
+        </div>
+        <div class="select-list">
+            <div class="input-group mb-3" style="padding-right: 25px;">
+                <input type="text" class="form-control" placeholder="Enter Beneficiary" aria-label="Username" aria-describedby="basic-addon1">
+                <span class="input-group-text" style="background-color: #0A8AD2; color: white; margin-right: -7%;"><mat-icon>search</mat-icon></span>
+            </div>             
+        </div>
+        <div class="btns">
+            <button class="btn-stl" igxButton igxButtonColor="white" igxButtonBackground="#029c1b" igxRipple="white" (click)='filter()'>Filter Transactions</button>
+        </div>
+        <div class="btns">
+            <button class="btn-stl" igxButton igxButtonColor="white" igxButtonBackground="#0A8AD2" igxRipple="white" (click)="stop_categorizing_clear()">Clear Selections</button>
+        </div>
+
+    </mat-sidenav>
+</mat-sidenav-container>
+
+</body>
